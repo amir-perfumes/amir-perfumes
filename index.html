@@ -37,11 +37,11 @@
     .products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .product{background:var(--panel);border:1px solid #30272a;border-radius:12px;overflow:hidden;transition:.25s}
     .product:hover{transform:translateY(-5px);border-color:#8b2636}
-    .product-visual{height:210px;display:grid;place-items:center;background:radial-gradient(circle,#48101c,#1b1014 58%,#131315)}
+    .product-visual{height:auto;aspect-ratio:1/1;display:block;background:#151014;overflow:hidden}.product-visual img{width:100%;height:100%;object-fit:cover;display:block}
     .mini-bottle{height:125px;width:82px;border:1px solid #b7a4a6;border-radius:12px 12px 16px 16px;background:linear-gradient(90deg,#242124,#080809,#493038);position:relative;box-shadow:8px 12px 18px #0008;display:grid;place-items:center}
     .mini-bottle:before{content:"";position:absolute;top:-22px;width:34px;height:22px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,#54494b,#d5c7c8,#443b3d)}
     .mini-bottle span{font-weight:bold;letter-spacing:1px;font-size:12px;color:#ff6376}
-    .product-info{padding:18px}.tag{font-size:11px;color:#ff6679;border:1px solid #682331;border-radius:20px;padding:3px 9px;display:inline-block}
+    .product-info{padding:18px}.size-prices{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;margin:12px 0 14px;color:var(--muted)}.size-prices b{display:block;color:#fff;font-size:15px}.size-label{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:3px}.size-label select{max-width:145px;background:#20171a;color:#fff;border:1px solid #68303b;border-radius:5px;padding:7px;font:inherit;font-size:12px}.tag{font-size:11px;color:#ff6679;border:1px solid #682331;border-radius:20px;padding:3px 9px;display:inline-block}
     .product h3{margin:10px 0 3px;font-size:19px}.product p{color:var(--muted);font-size:13px;min-height:43px;margin:0 0 14px}
     .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-weight:bold;font-size:18px}.price small{font-size:11px;color:var(--muted);font-weight:normal}
     .order{background:var(--red);padding:8px 12px;border-radius:6px;font-size:13px;font-weight:bold}
@@ -50,7 +50,7 @@
     footer{border-top:1px solid #2a2325;padding:30px 7%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:13px}
     .notice{color:#9f9699;font-size:12px;text-align:center;margin-top:22px}
     @media(max-width:800px){nav{gap:12px;font-size:12px}.hero{grid-template-columns:1fr;text-align:center;padding-top:55px}.hero p{margin:auto}.actions{justify-content:center}.hero-art{min-height:320px}.categories,.products{grid-template-columns:1fr 1fr}.custom{display:block;text-align:center}.custom .btn{margin-top:20px}}
-    @media(max-width:520px){.topbar{padding:14px 5%}.logo{font-size:21px}nav a:nth-child(2){display:none}.hero{padding:50px 5%}.hero-art{min-height:280px}.halo{width:260px;height:260px}.bottle{transform:scale(.82)}section{padding:55px 5%}.categories,.products{grid-template-columns:1fr}.product-visual{height:190px}.section-head h2{font-size:29px}.custom{padding:25px 18px}}
+    @media(max-width:520px){.topbar{padding:14px 5%}.logo{font-size:21px}nav a:nth-child(2){display:none}.hero{padding:50px 5%}.hero-art{min-height:280px}.halo{width:260px;height:260px}.bottle{transform:scale(.82)}section{padding:55px 5%}.categories,.products{grid-template-columns:1fr}.product-visual{height:auto;aspect-ratio:1/1}.section-head h2{font-size:29px}.custom{padding:25px 18px}}
   </style>
 </head>
 <body>
@@ -82,22 +82,64 @@
     </section>
 
     <section id="products">
-      <div class="section-head"><div class="eyebrow">اختيارات مميزة</div><h2>العطور الأكثر جذبًا</h2><p>دي منتجات تجريبية؛ غيّر الأسماء والأسعار قبل نشر الموقع.</p></div>
+      <div class="section-head"><div class="eyebrow">اختيارات مميزة</div><h2>العطور الأكثر جذبًا</h2><p>٦ اختيارات بروائح عصرية مستوحاة من الاتجاهات الرائجة — تركيب AMIR.</p></div>
       <div class="products">
         <article class="product">
-          <div class="product-visual"><div class="mini-bottle"><span>AMIR</span></div></div>
-          <div class="product-info"><span class="tag">رجالي</span><h3>AMIR Noir</h3><p>طابع دافئ وأنيق مناسب للمساء والمناسبات.</p><div class="product-bottom"><div class="price">السعر يُحدد <small>حسب الحجم</small></div><a class="order" href="#" onclick="orderProduct('AMIR Noir');return false">اطلب عبر واتساب</a></div></div>
+          <div class="product-visual"><img src="images/perfume-1.jpg" alt="زجاجة عطر AMIR Sauvage Style" loading="lazy"></div>
+          <div class="product-info"><span class="tag">رجالي</span><h3>AMIR Sauvage Style</h3><p>ريحة فريش وحارة بلمسة فلفل وعنبر؛ اختيار يومي ملفت.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size1">الحجم
+              <select id="size1" aria-label="اختار حجم AMIR Sauvage Style"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Sauvage Style', document.getElementById('size1').value);return false">اطلب عبر واتساب</a></div>
+          </div>
         </article>
         <article class="product">
-          <div class="product-visual"><div class="mini-bottle"><span>AMIR</span></div></div>
-          <div class="product-info"><span class="tag">حريمي</span><h3>AMIR Rouge</h3><p>رائحة أنثوية جذابة بلمسة عصرية.</p><div class="product-bottom"><div class="price">السعر يُحدد <small>حسب الحجم</small></div><a class="order" href="#" onclick="orderProduct('AMIR Rouge');return false">اطلب عبر واتساب</a></div></div>
+          <div class="product-visual"><img src="images/perfume-2.jpg" alt="زجاجة عطر AMIR Blue Night" loading="lazy"></div>
+          <div class="product-info"><span class="tag">رجالي</span><h3>AMIR Blue Night</h3><p>ستايل خشبي منعش وأنيق مناسب للشغل والخروجات.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size2">الحجم
+              <select id="size2" aria-label="اختار حجم AMIR Blue Night"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Blue Night', document.getElementById('size2').value);return false">اطلب عبر واتساب</a></div>
+          </div>
         </article>
         <article class="product">
-          <div class="product-visual"><div class="mini-bottle"><span>AMIR</span></div></div>
-          <div class="product-info"><span class="tag">خلطة حصرية</span><h3>AMIR Signature</h3><p>خلطة خاصة تقدر تضيف لها بصمتك وتفردك.</p><div class="product-bottom"><div class="price">السعر يُحدد <small>حسب الحجم</small></div><a class="order" href="#" onclick="orderProduct('AMIR Signature');return false">اطلب عبر واتساب</a></div></div>
+          <div class="product-visual"><img src="images/perfume-3.jpg" alt="زجاجة عطر AMIR Aqua Victory" loading="lazy"></div>
+          <div class="product-info"><span class="tag">رجالي</span><h3>AMIR Aqua Victory</h3><p>انتعاش مائي وفاكهي بطابع شبابي وحيوي.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size3">الحجم
+              <select id="size3" aria-label="اختار حجم AMIR Aqua Victory"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Aqua Victory', document.getElementById('size3').value);return false">اطلب عبر واتساب</a></div>
+          </div>
+        </article>
+        <article class="product">
+          <div class="product-visual"><img src="images/perfume-4.jpg" alt="زجاجة عطر AMIR Libre Bloom" loading="lazy"></div>
+          <div class="product-info"><span class="tag">حريمي</span><h3>AMIR Libre Bloom</h3><p>زهور بيضا ولمسة دافئة أنيقة من النهار للمساء.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size4">الحجم
+              <select id="size4" aria-label="اختار حجم AMIR Libre Bloom"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Libre Bloom', document.getElementById('size4').value);return false">اطلب عبر واتساب</a></div>
+          </div>
+        </article>
+        <article class="product">
+          <div class="product-visual"><img src="images/perfume-5.jpg" alt="زجاجة عطر AMIR Red Desire" loading="lazy"></div>
+          <div class="product-info"><span class="tag">حريمي</span><h3>AMIR Red Desire</h3><p>طابع جذاب ودافئ بلمسات زهرية وفاكهية.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size5">الحجم
+              <select id="size5" aria-label="اختار حجم AMIR Red Desire"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Red Desire', document.getElementById('size5').value);return false">اطلب عبر واتساب</a></div>
+          </div>
+        </article>
+        <article class="product">
+          <div class="product-visual"><img src="images/perfume-6.jpg" alt="زجاجة عطر AMIR Pink Aura" loading="lazy"></div>
+          <div class="product-info"><span class="tag">حريمي</span><h3>AMIR Pink Aura</h3><p>ريحة ناعمة وحلوة بلمسات فاكهية وزهرية.</p>
+            <div class="size-prices"><span>50 مل <b>150 ج.م</b></span><span>100 مل <b>300 ج.م</b></span></div>
+            <div class="product-bottom"><label class="size-label" for="size6">الحجم
+              <select id="size6" aria-label="اختار حجم AMIR Pink Aura"><option value="50 مل - 150 جنيه">50 مل - 150 ج.م</option><option value="100 مل - 300 جنيه">100 مل - 300 ج.م</option></select></label>
+              <a class="order" href="#" onclick="orderProduct('AMIR Pink Aura', document.getElementById('size6').value);return false">اطلب عبر واتساب</a></div>
+          </div>
         </article>
       </div>
-      <p class="notice">مهم: المنتجات والأسعار المعروضة هنا نماذج مؤقتة وليست قائمة منتجات مؤكدة.</p>
+      <p class="notice">الأسعار: 150 جنيه لعبوة 50 مل، و300 جنيه لعبوة 100 مل. الروائح تركيب مستوحاة من طابع عطور مشهورة، وليست منتجات أصلية من الماركات المذكورة.</p>
     </section>
 
     <section id="contact">
@@ -109,12 +151,12 @@
   <script>
     // ضع رقم واتساب الخاص بك بدل الأصفار. استخدم كود الدولة بدون + أو مسافات، مثال مصر: 201XXXXXXXXX
     const WHATSAPP_NUMBER = "201060537225";
-    function orderProduct(productName) {
+    function orderProduct(productName, size = "") {
       if (WHATSAPP_NUMBER === "201000000000") {
         alert("الموقع جاهز للتجربة! لتفعيل الطلبات، افتح ملف index.html وابحث عن WHATSAPP_NUMBER واستبدل الرقم برقم واتسابك مع كود الدولة.");
         return;
       }
-      const message = `أهلاً AMIR، عايز أستفسر/أطلب: ${productName}`;
+      const message = `أهلاً AMIR، عايز أطلب: ${productName}${size ? " - " + size : ""}`;
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
     }
     document.getElementById("year").textContent = new Date().getFullYear();
